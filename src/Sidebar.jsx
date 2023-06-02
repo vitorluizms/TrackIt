@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 export default function SideBar() {
   return (
@@ -8,7 +9,7 @@ export default function SideBar() {
       <ContainerProgress>
         <CircularProgressbar
           value={50}
-          text={"Hoje"}
+          text="Hoje"
           background
           backgroundPadding={6}
           styles={buildStyles({

@@ -1,7 +1,7 @@
 import { LineWave } from "react-loader-spinner";
 import logo from "../../assets/Logo_PNG.png";
 import { Forms, Container } from "./style";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
