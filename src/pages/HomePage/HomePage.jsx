@@ -23,7 +23,6 @@ export default function Home() {
     axios
       .post(`${urlBase}/auth/login`, body)
       .then((response) => {
-        console.log(response.data);
         setUrl(response.data.image);
         setToken(response.data.token);
         navigate("/hoje")
