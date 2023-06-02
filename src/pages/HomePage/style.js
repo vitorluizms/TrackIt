@@ -45,7 +45,7 @@ const Form = styled.form`
     padding-left: 11px;
 
     background: #ffffff;
-    color: #dbdbdb;
+    color: #666666;
     border: 1px solid #d5d5d5;
     border-radius: 5px;
 
@@ -57,13 +57,13 @@ const Form = styled.form`
     text-align: left;
   }
   button {
-    width: 317px;
-    height: 45px;
+    width: 303px;
+    height: 40px;
 
     font-family: "Lexend Deca";
     font-style: normal;
     font-weight: 400;
-    font-size: 20.976px;
+    font-size: 21px;
     line-height: 26px;
     text-align: center;
 

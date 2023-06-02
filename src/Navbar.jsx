@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import UserContext from "./context/UserContext";
 
 export default function NavBar() {
+
+  const {urlImage} = useContext(UserContext)
   return (
     <Navbar>
       <div>
         <p>TrackIt</p>
         <img
-          src="https://i.pinimg.com/originals/08/41/ea/0841ea1975884bd483353ee4a7b17ae6.jpg"
+          src={urlImage}
           alt="profile"
         />
       </div>
