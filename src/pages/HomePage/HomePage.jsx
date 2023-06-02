@@ -10,7 +10,7 @@ export default function Home() {
       <Form>
         <input id="email" type="text" placeholder="email" required />
         <input id="password" type="text" placeholder="senha" required />
-        <Link to={"/habitos"}>
+        <Link to={"/hoje"}>
           <button>Entrar</button>
         </Link>
       </Form>

@@ -22,7 +22,7 @@ const Content = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    span {
+    h1 {
       font-family: "Lexend Deca", sans-serif;
       font-weight: 400;
       font-size: 22.976px;
@@ -40,6 +40,12 @@ const Content = styled.div`
       background: #52b6ff;
       border-radius: 5px;
       border: 12px solid #52b6ff;
+
+      &:hover {
+        cursor: pointer;
+        background: #4169e1;
+        border: 12px solid #4169e1;
+      }
     }
   }
 
@@ -108,6 +114,11 @@ const AddHabit = styled.div`
 
       color: #52b6ff;
       margin-right: 23px;
+
+      &:hover {
+        cursor: pointer;
+        color: red;
+      }
     }
 
     button {
@@ -126,6 +137,13 @@ const AddHabit = styled.div`
       text-align: center;
 
       color: #ffffff;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #ffffff;
+        border: 1px solid #52b6ff;
+        color: #52b6ff;
+      }
     }
   }
 `;
@@ -133,14 +151,13 @@ const AddHabit = styled.div`
 const Habit = styled.div`
   width: 100%;
   height: 91px;
-  gap: 11px;
+  gap: 5px;
 
   display: flex;
   flex-direction: column;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-
 
   div:nth-child(2) {
     width: 234px;
@@ -156,6 +173,18 @@ const Habit = styled.div`
 
     margin: 10px 0 0px 11px;
     color: #666666;
+  }
+  h2 {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+
+    margin: 0px 0 0px 11px;
+    color: #666666;
+  }
+  span {
+    color: ${(props) => (props.count === 0 ? "#666666" : "#8FC549")};
   }
 `;
 

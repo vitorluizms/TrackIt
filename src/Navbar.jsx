@@ -42,7 +42,7 @@ const Navbar = styled.div`
     font-family: "Playball";
     font-style: normal;
     font-weight: 400;
-    font-size: 38.982px;
+    font-size: 39px;
     line-height: 49px;
 
     color: #ffffff;

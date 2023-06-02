@@ -39,4 +39,10 @@ const Weekday = styled.button`
   line-height: 25px;
 
   color: ${props => props.selected === true ? '#FFFFFF' : '#DBDBDB'};
+
+  &:hover{
+    cursor: pointer;
+    color: #52b6ff;
+    border: 1px solid #52b6ff;
+  }
 `;

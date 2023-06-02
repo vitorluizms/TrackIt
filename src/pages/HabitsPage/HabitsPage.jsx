@@ -32,7 +32,7 @@ export default function Habits() {
       <NavBar />
       <Content>
         <div>
-          <span>Meus Hábitos</span>
+          <h1>Meus Hábitos</h1>
           <img onClick={addHabit} src={plus} alt="" />
         </div>
         <AddHabit addHabit={addHab}>

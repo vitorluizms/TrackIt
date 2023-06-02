@@ -1,25 +1,30 @@
 import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from "react-router-dom";
 
 export default function SideBar() {
   return (
     <Sidebar>
-      <p>Hábitos</p>
+      <Link to={"/habitos"} style={{ textDecoration: "none" }}>
+        <p>Hábitos</p>
+      </Link>
       <ContainerProgress>
-        <CircularProgressbar
-          value={50}
-          text="Hoje"
-          background
-          backgroundPadding={6}
-          styles={buildStyles({
-            backgroundColor: "#3e98c7",
-            textColor: "#fff",
-            textSize: "18px",
-            pathColor: "#fff",
-            trailColor: "transparent",
-          })}
-        />
+        <Link to={"/hoje"}>
+          <CircularProgressbar
+            value={50}
+            text="Hoje"
+            background
+            backgroundPadding={6}
+            styles={buildStyles({
+              backgroundColor: "#3e98c7",
+              textColor: "#fff",
+              textSize: "18px",
+              pathColor: "#fff",
+              trailColor: "transparent",
+            })}
+          />
+        </Link>
       </ContainerProgress>
       <p>Histórico</p>
     </Sidebar>
