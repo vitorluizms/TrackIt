@@ -27,6 +27,11 @@ const Container = styled.div`
 
     color: #52b6ff;
     margin-top: 25px;
+
+    &:hover {
+      cursor: pointer;
+      color: #00008b;
+    }
   }
 `;
 
@@ -71,7 +76,12 @@ const Form = styled.form`
     background: #52b6ff;
     border-radius: 5px;
     border: none;
+
+    &:hover {
+      cursor: pointer;
+      background: #00008b;
+    }
   }
 `;
 
-export {Container , Form};
+export { Container, Form };
