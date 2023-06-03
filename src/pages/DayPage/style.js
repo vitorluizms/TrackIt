@@ -1,46 +1,36 @@
 import styled from "styled-components";
-import NavBar from "../Navbar";
-import SideBar from "../Sidebar";
-import { Container} from "./HabitsPage/style";
-import { useState } from "react";
-
-export default function Day() {
-  const [count, setCount] = useState(1);
-
-  return (
-    <Container>
-      <NavBar />
-      <Content>
-        <div>
-          <h1>Segunda-feira, 17/05</h1>
-          <p>
-            {count === 0
-              ? "Nenhum hábito concluído ainda"
-              : "100% dos hábitos concluídos"}
-          </p>
-        </div>
-        <Habit count={count}>
-          <ContainerHabit>
-            <p>Hábito 1</p>
-            <div>
-              <h2>
-                Sequência atual: <span>{count === 0 ? "0 dias" : "1 dia"}</span>
-              </h2>
-              <h2>
-                Sequência atual: <span>{count === 0 ? "0 dias" : "1 dia"}</span>
-              </h2>
-            </div>
-          </ContainerHabit>
-        </Habit>
-      </Content>
-      <SideBar />
-    </Container>
-  );
-}
 
 const ContainerHabit = styled.div`
   width: 90%;
   height: 90%;
+  gap: 5px;
+
+  display: flex;
+  flex-direction: column;
+  p {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+
+    margin: 0px 0px 0px 11px;
+    color: #666666;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  strong {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+
+    color: #666666;
+  }
+  span {
+    color: ${(props) => (props.done === false ? "#666666" : "#8FC549")};
+  }
 `;
 
 const Content = styled.div`
@@ -68,6 +58,7 @@ const Content = styled.div`
 
     img {
       width: 35px;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -91,17 +82,16 @@ const Content = styled.div`
     line-height: 22px;
     word-break: break-word;
 
-    color: #666666;
+    color: ${(props) => (props.counter === 0 ? "#666666" : "#8FC549")};
   }
 `;
 
 const Habit = styled.div`
   width: 100%;
   height: 91px;
-  gap: 5px;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -112,28 +102,35 @@ const Habit = styled.div`
     margin-left: 11px;
     display: flex;
   }
-  div:nth-child(5) {
-    display: flex;  
-  }
   p {
     font-family: "Lexend Deca", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
 
-    margin: 10px 0 0px 11px;
-    color: #666666;
-  }
-  h2 {
-    font-family: "Lexend Deca", sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
-
     margin: 0px 0 0px 11px;
     color: #666666;
   }
-  span {
-    color: ${(props) => (props.count === 0 ? "#666666" : "#8FC549")};
+
+  img {
+    width: 55px;
+    height: 55px;
+    margin-right: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: ${props => props.done === true ? "#8fc549" : "#EBEBEB"};
+    border-radius: 5px;
+    border: 15px solid ${props => props.done === true ? "#8fc549" : "#EBEBEB"};
+
+    &:hover {
+      cursor: pointer;
+      background: ${props => props.done === true ? "#6b9633" : "#A9A9A9"};
+      border: 15px solid ${props => props.done === true ? "#6b9633" : "#A9A9A9"};
+    }
   }
 `;
+
+export { ContainerHabit, Content, Habit };

@@ -1,7 +1,7 @@
 import Home from "./pages/HomePage/HomePage";
 import Register from "./pages/RegisterPage/RegisterPage";
 import Habits from "./pages/HabitsPage/HabitsPage";
-import Day from "./pages/DayPage";
+import Day from "./pages/DayPage/DayPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import { useState } from "react";
