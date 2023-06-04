@@ -11,10 +11,9 @@ import axios from "axios";
 import HabitComponent from "./Habit";
 
 export default function Day() {
-  const { token } = useContext(UserContext);
+  const { token, percentage, setPercentage } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
   const [counter, setCounter] = useState(0);
-  const [percentage, setPercentage] = useState(0);
   const currentDate = dayjs().locale("pt-br").format("dddd, DD/MM");
   const UpperCaseDate =
     currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
@@ -113,7 +112,7 @@ export default function Day() {
           />
         ))}
       </Content>
-      <SideBar percentage={percentage}/>
+      <SideBar />
     </Container>
   );
 }

@@ -7,13 +7,16 @@ import UserContext from "./context/UserContext";
 import { useState } from "react";
 
 export default function App() {
-
-  const [urlImage, setUrl] = useState('')
-  const [token, setToken] = useState('')
+  const [urlImage, setUrl] = useState("");
+  const [token, setToken] = useState("");
+  const [percentage, setPercentage] = useState(0);
+  const [addHab, setAdd] = useState(false);
 
   return (
     <>
-      <UserContext.Provider value={{ urlImage, token, setUrl, setToken }}>
+      <UserContext.Provider
+        value={{ urlImage, token, setUrl, setToken, addHab, setAdd, percentage, setPercentage }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

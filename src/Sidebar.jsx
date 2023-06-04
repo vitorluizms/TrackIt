@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "./context/UserContext";
 
-export default function SideBar(props) {
+export default function SideBar() {
 
-  const {percentage} = props
+  const {percentage} = useContext(UserContext)
 
   return (
     <Sidebar>
@@ -46,6 +48,7 @@ const Sidebar = styled.div`
   position: fixed;
   left: 0;
   bottom: 0;
+  overflow: visible;
 
   background-color: #ffffff;
 

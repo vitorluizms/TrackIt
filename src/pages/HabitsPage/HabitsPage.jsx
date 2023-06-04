@@ -1,22 +1,41 @@
 import plus from "../../assets/plus.svg";
 import NavBar from "../../Navbar";
-import styled from "styled-components";
 import SideBar from "../../Sidebar";
 import ButtonDay from "./Days";
-import { Container, Content, AddHabit, Habit } from "./style";
-import { useState } from "react";
+import Habit from "./HabitComponent";
+import { Container, Content, AddHabit, ContainerHabit } from "./style";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../../context/UserContext";
+import urlBase from "../../urls";
+import axios from "axios";
 
 export default function Habits() {
+  const { addHab, setAdd, token } = useContext(UserContext);
+  const [habits, setHabits] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${urlBase}/habits`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setHabits(response.data);
+        console.log(response.data);
+      })
+      .catch((response) => {
+        alert(response.response.data.message);
+      });
+  }, []);
+
   const days = [
-    { weekDay: "D", name: "Domingo" },
-    { weekDay: "S", name: "Segunda" },
-    { weekDay: "T", name: "Terça" },
-    { weekDay: "Q", name: "Quarta" },
-    { weekDay: "Q", name: "Quinta" },
-    { weekDay: "S", name: "Sexta" },
-    { weekDay: "S", name: "Sábado" },
+    { weekDay: "D", name: 0 },
+    { weekDay: "S", name: 1 },
+    { weekDay: "T", name: 2 },
+    { weekDay: "Q", name: 3 },
+    { weekDay: "Q", name: 4 },
+    { weekDay: "S", name: 5 },
+    { weekDay: "S", name: 6 },
   ];
-  const [addHab, setAdd] = useState(false);
 
   function addHabit() {
     if (addHab === false) {
@@ -24,17 +43,16 @@ export default function Habits() {
     } else {
       setAdd(false);
     }
-    console.log(addHab);
   }
 
   return (
     <Container>
       <NavBar />
       <Content>
-        <div>
+        <ContainerHabit>
           <h1>Meus Hábitos</h1>
-          <img onClick={addHabit} src={plus} alt="" />
-        </div>
+          <img onClick={addHabit} src={plus} alt="plus" />
+        </ContainerHabit>
         <AddHabit addHabit={addHab}>
           <input type="text" id="nome do hábito" placeholder="nome do hábito" />
           <div>
@@ -47,14 +65,7 @@ export default function Habits() {
             <button>Salvar</button>
           </div>
         </AddHabit>
-        <Habit>
-          <p>Hábito 1</p>
-          <div>
-            {days.map((day) => (
-              <ButtonDay day={day.weekDay} key={day.name} />
-            ))}
-          </div>
-        </Habit>
+        {habits.map(habit => <Habit days={days} key={habit.id} habit={habit}/>)}
         <p>
           Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
           começar a trackear!

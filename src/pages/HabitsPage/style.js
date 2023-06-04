@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   height: 100%;
-  margin: 98px 3% 70px 3%;
+  margin: 98px 3% 110px 3%;
 
   display: flex;
   flex-direction: column;
@@ -30,25 +30,7 @@ const Content = styled.div`
 
       color: #126ba5;
     }
-
-    img {
-      width: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #52b6ff;
-      border-radius: 5px;
-      border: 12px solid #52b6ff;
-
-      &:hover {
-        cursor: pointer;
-        background: #4169e1;
-        border: 12px solid #4169e1;
-      }
-    }
   }
-
   p {
     font-family: "Lexend Deca";
     font-weight: 400;
@@ -60,7 +42,26 @@ const Content = styled.div`
   }
 `;
 
-const AddHabit = styled.div`
+const ContainerHabit = styled.div`
+  img {
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #52b6ff;
+    border-radius: 5px;
+    border: 12px solid #52b6ff;
+
+    &:hover {
+      cursor: pointer;
+      background: #4169e1;
+      border: 12px solid #4169e1;
+    }
+  }
+`;
+
+const AddHabit = styled.form`
   width: 100%;
   height: 180px;
   display: flex;
@@ -148,16 +149,24 @@ const AddHabit = styled.div`
   }
 `;
 
-const Habit = styled.div`
+const HabitContainer = styled.div`
   width: 100%;
   height: 91px;
   gap: 5px;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  img {
+    width: 15px;
+    height: 15px;
+    margin: 0px 11px 0px 0px;
+    cursor: pointer;
+  }
 
   div:nth-child(2) {
     width: 234px;
@@ -171,21 +180,9 @@ const Habit = styled.div`
     font-size: 20px;
     line-height: 25px;
 
-    margin: 10px 0 0px 11px;
-    color: #666666;
-  }
-  h2 {
-    font-family: "Lexend Deca", sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
-
     margin: 0px 0 0px 11px;
     color: #666666;
   }
-  span {
-    color: ${(props) => (props.count === 0 ? "#666666" : "#8FC549")};
-  }
 `;
 
-export { Container, Content, AddHabit, Habit };
+export { Container, Content, AddHabit, HabitContainer, ContainerHabit };
