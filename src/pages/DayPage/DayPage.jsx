@@ -13,7 +13,8 @@ import HabitComponent from "./Habit";
 export default function Day() {
   const { token } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
-  const [finished, setFinished] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const [percentage, setPercentage] = useState(0);
   const currentDate = dayjs().locale("pt-br").format("dddd, DD/MM");
   const UpperCaseDate =
     currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
@@ -25,19 +26,23 @@ export default function Day() {
       })
       .then((response) => {
         setHabits(response.data);
+        let count = 0;
+        let finished = 0;
+        if (response.data.length !== 0) {
+          response.data.find((element) => {
+            if (element.done === true) {
+              count += 1;
+            }
+          });
+          setCounter(count);
+          finished = (count / response.data.length) * 100;
+          setPercentage(finished);
+        }
       })
       .catch((response) => {
         console.log(response);
       });
   }, []);
-
-  let counter = finished;
-  const value = habits.find((element) => {
-    if (element.done === true) {
-      counter += 1;
-    }
-  });
-  let percentage = ((counter / habits.length) * 100);
 
   function checkHabit(id, done) {
     const bodyy = {};
@@ -69,6 +74,18 @@ export default function Day() {
       })
       .then((response) => {
         setHabits(response.data);
+        let count = 0;
+        let finished = 0;
+        if (response.data.length !== 0) {
+          response.data.find((element) => {
+            if (element.done === true) {
+              count += 1;
+            }
+          });
+          setCounter(count);
+          finished = (count / response.data.length) * 100;
+          setPercentage(finished);
+        }
       })
       .catch((response) => {
         alert(response.response.data.message);
@@ -96,7 +113,7 @@ export default function Day() {
           />
         ))}
       </Content>
-      <SideBar />
+      <SideBar percentage={percentage}/>
     </Container>
   );
 }

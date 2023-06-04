@@ -3,7 +3,10 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from "react-router-dom";
 
-export default function SideBar() {
+export default function SideBar(props) {
+
+  const {percentage} = props
+
   return (
     <Sidebar>
       <Link to={"/habitos"} style={{ textDecoration: "none" }}>
@@ -12,7 +15,7 @@ export default function SideBar() {
       <ContainerProgress>
         <Link to={"/hoje"}>
           <CircularProgressbar
-            value={50}
+            value={percentage}
             text="Hoje"
             background
             backgroundPadding={6}
