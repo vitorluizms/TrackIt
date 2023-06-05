@@ -16,20 +16,27 @@ const ContainerHabit = styled.div`
     margin: 0px 0px 0px 11px;
     color: #666666;
   }
-  div {
+  div:nth-child(2) {
     display: flex;
     flex-direction: column;
-  }
-  strong {
-    font-family: "Lexend Deca", sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
+    div {
+      display: flex;
+      margin-left: 0px;
+    }
+    h2 {
+      font-family: "Lexend Deca", sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 16px;
 
-    color: #666666;
-  }
-  span {
-    color: ${(props) => (props.done === false ? "#666666" : "#8FC549")};
+      color: #666666;
+    }
+    strong {
+      color: ${(props) => (props.done === false ? "#666666" : "#8FC549")};
+    }
+    span {
+      color: ${(props) => (props.done === false ? "#666666" : (props.highest > props.current ? "#666666" : "#8FC549"))};
+    }
   }
 `;
 

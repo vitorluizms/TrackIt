@@ -8,25 +8,29 @@ export default function HabitComponent(props) {
 
   return (
     <Habit done={habit.done} count={count} data-test="today-habit-container">
-      <ContainerHabit done={habit.done}>
+      <ContainerHabit done={habit.done} highest={habit.highestSequence} current={habit.currentSequence}>
         <p data-test="today-habit-name">{UpperCaseHabit}</p>
         <div>
-          <strong data-test="today-habit-sequence">
-            Sequência atual:{" "}
-            <span>
-              {habit.currentSequence === 1
-                ? "1 dia"
-                : `${habit.currentSequence} dias`}
-            </span>
-          </strong>
-          <strong data-test="today-habit-record">
-            Seu record:{" "}
-            <span>
-              {habit.highestSequence === 1
-                ? "1 dia"
-                : `${habit.highestSequence} dias`}
-            </span>
-          </strong>
+          <div>
+            <h2 data-test="today-habit-sequence">
+              Sequência atual:{" "}
+              <strong>
+                {habit.currentSequence === 1
+                  ? "1 dia"
+                  : `${habit.currentSequence} dias`}
+              </strong>
+            </h2>
+          </div>
+          <div>
+            <h2 data-test="today-habit-record">
+              Seu record:{" "}
+              <span>
+                {habit.highestSequence === 1
+                  ? "1 dia"
+                  : `${habit.highestSequence} dias`}
+              </span>
+            </h2>
+          </div>
         </div>
       </ContainerHabit>
       <img

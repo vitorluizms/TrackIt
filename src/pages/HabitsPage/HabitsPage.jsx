@@ -137,7 +137,7 @@ export default function Habits() {
               onClick={addHabit}
               src={plus}
               alt="plus"
-              data-test="create-btn"
+              data-test="habit-create-btn"
             />
           </ContainerHabit>
           <AddHabit
