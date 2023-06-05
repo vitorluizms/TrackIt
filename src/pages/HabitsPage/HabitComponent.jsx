@@ -1,16 +1,15 @@
 import trash from "../../assets/dump.svg";
-import ButtonDay from "./Days";
 import { HabitContainer } from "./style";
 import styled from "styled-components";
 
 export default function Habit(props) {
-  const { days, habit } = props;
+  const { days, habit, deleteHabit } = props;
 
   return (
     <HabitContainer>
       <div>
         <p>{habit.name}</p>
-        <img src={trash} alt="trash" />
+        <img src={trash} alt="trash" onClick={() => {if (confirm("Você realmente quer apagar esse hábito?") === true){deleteHabit(habit.id)}}} />
       </div>
       <div>
         {days.map((day) => (
@@ -50,13 +49,4 @@ const Weekday = styled.button`
 
   color: ${(props) =>
     props.days.includes(props.day.name) ? "#FFFFFF" : "#DBDBDB"};
-`;
-
-const ContainerHabit = styled.div`
-  img {
-    width: 13px;
-    border: none;
-    background: #ffffff;
-    margin: 0px 0 0px 11px;
-  }
 `;

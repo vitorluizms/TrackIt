@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  height: 100%;
+  height: ${props => props.started === false ? "100vh" : "100%"};
   margin: 98px 3% 110px 3%;
 
   display: flex;
@@ -19,8 +19,9 @@ const Content = styled.div`
   div:nth-child(1) {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: ${props => props.started === false ? "center" : "space-between"};
     align-items: center;
+    margin-top: ${props => props.started === false ? "30vh" : "0"};
 
     h1 {
       font-family: "Lexend Deca", sans-serif;
@@ -185,4 +186,51 @@ const HabitContainer = styled.div`
   }
 `;
 
-export { Container, Content, AddHabit, HabitContainer, ContainerHabit };
+const Weekday = styled.button`
+  width: 25px;
+  height: 25px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${(props) => (props.selected === true ? "#CFCFCF" : "#FFFFFF")};
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+
+  font-family: "Lexend Deca";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+
+  color: ${(props) => (props.selected === true ? "#FFFFFF" : "#DBDBDB")};
+
+  &:hover {
+    cursor: pointer;
+    color: #52b6ff;
+    border: 1px solid #52b6ff;
+  }
+`;
+
+const ContainerLoader = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export {
+  Container,
+  Content,
+  AddHabit,
+  HabitContainer,
+  ContainerHabit,
+  Weekday,
+  ContainerLoader,
+};
