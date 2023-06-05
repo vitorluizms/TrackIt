@@ -58,6 +58,7 @@ export default function Habits() {
   }
 
   function postHabit(e) {
+    console.log('a')
     e.preventDefault();
     if (nameHabit === "") {
       alert("Nome inválido");
@@ -174,10 +175,11 @@ export default function Habits() {
               <p
                 onClick={() => setAdd(false)}
                 data-test="habit-create-cancel-btn"
+                disabled={state}
               >
                 Cancelar
               </p>
-              <button data-test="habit-create-save-btn">Salvar</button>
+              <button data-test="habit-create-save-btn" disabled={state}>Salvar</button>
             </div>
           </AddHabit>
           {habits.map((habit) => (
