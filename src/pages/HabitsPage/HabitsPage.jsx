@@ -59,29 +59,33 @@ export default function Habits() {
 
   function postHabit(e) {
     e.preventDefault();
-    const body = {
-      name: nameHabit,
-      days: arrayDays,
-    };
-    setState(true);
+    if (nameHabit === "") {
+      alert("Nome inválido");
+    } else {
+      const body = {
+        name: nameHabit,
+        days: arrayDays,
+      };
+      setState(true);
 
-    axios
-      .post(`${urlBase}/habits`, body, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setAdd(false);
-        setName("");
-        let array = [];
-        setArrayDays(array);
-      })
-      .catch((response) => {
-        alert(response.response.data.message);
-      })
-      .finally(() => {
-        setState(false);
-        getHabits();
-      });
+      axios
+        .post(`${urlBase}/habits`, body, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setAdd(false);
+          setName("");
+          let array = [];
+          setArrayDays(array);
+        })
+        .catch((response) => {
+          alert(response.response.data.message);
+        })
+        .finally(() => {
+          setState(false);
+          getHabits();
+        });
+    }
   }
 
   function deleteHabit(id) {
@@ -151,7 +155,6 @@ export default function Habits() {
               placeholder="nome do hábito"
               value={nameHabit}
               onChange={(e) => setName(e.target.value)}
-              required
               disabled={state}
               data-test="habit-name-input"
             />
