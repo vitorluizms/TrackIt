@@ -6,16 +6,22 @@ export default function ButtonDay(props) {
     let array = [...arrayDays];
 
     if (!array.includes(dayId)) {
-        array.push(dayId)
-        setDays(array)
-    }
-    else {
-        array = array.filter((element) => element !== dayId)
-        setDays(array)
+      array.push(dayId);
+      setDays(array);
+    } else {
+      array = array.filter((element) => element !== dayId);
+      setDays(array);
     }
   }
   return (
-    <Weekday type="button" onClick={changeButton} days={arrayDays} day={dayId} disabled={state}>
+    <Weekday
+      type="button"
+      onClick={changeButton}
+      days={arrayDays}
+      day={dayId}
+      disabled={state}
+      data-test="habit-day"
+    >
       {day}
     </Weekday>
   );
@@ -29,7 +35,8 @@ const Weekday = styled.button`
   align-items: center;
   justify-content: center;
 
-  background: ${(props) => (props.days.includes(props.day) === true ? "#CFCFCF" : "#FFFFFF")};
+  background: ${(props) =>
+    props.days.includes(props.day) === true ? "#CFCFCF" : "#FFFFFF"};
   border: 1px solid #d5d5d5;
   border-radius: 5px;
 
@@ -39,7 +46,8 @@ const Weekday = styled.button`
   font-size: 20px;
   line-height: 25px;
 
-  color: ${(props) => (props.days.includes(props.day) === true ? "#FFFFFF" : "#DBDBDB")};
+  color: ${(props) =>
+    props.days.includes(props.day) === true ? "#FFFFFF" : "#DBDBDB"};
 
   &:hover {
     cursor: pointer;

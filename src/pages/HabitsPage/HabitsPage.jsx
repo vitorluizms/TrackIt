@@ -133,9 +133,18 @@ export default function Habits() {
         <Content>
           <ContainerHabit>
             <h1>Meus Hábitos</h1>
-            <img onClick={addHabit} src={plus} alt="plus" />
+            <img
+              onClick={addHabit}
+              src={plus}
+              alt="plus"
+              data-test="create-btn"
+            />
           </ContainerHabit>
-          <AddHabit addHabit={addHab} onSubmit={postHabit}>
+          <AddHabit
+            addHabit={addHab}
+            onSubmit={postHabit}
+            data-test="habit-create-container"
+          >
             <input
               type="text"
               id="nome do hábito"
@@ -144,6 +153,7 @@ export default function Habits() {
               onChange={(e) => setName(e.target.value)}
               required
               disabled={state}
+              data-test="habit-name-input"
             />
             <div>
               {days.map((day) => (
@@ -158,8 +168,13 @@ export default function Habits() {
               ))}
             </div>
             <div>
-              <p onClick={() => setAdd(false)}>Cancelar</p>
-              <button>Salvar</button>
+              <p
+                onClick={() => setAdd(false)}
+                data-test="habit-create-cancel-btn"
+              >
+                Cancelar
+              </p>
+              <button data-test="habit-create-save-btn">Salvar</button>
             </div>
           </AddHabit>
           {habits.map((habit) => (

@@ -6,12 +6,13 @@ export default function NavBar() {
 
   const {urlImage} = useContext(UserContext)
   return (
-    <Navbar>
+    <Navbar data-test="header">
       <div>
         <p>TrackIt</p>
         <img
           src={urlImage}
           alt="profile"
+          data-test="avatar"
         />
       </div>
     </Navbar>

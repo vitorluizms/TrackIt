@@ -6,10 +6,19 @@ export default function Habit(props) {
   const { days, habit, deleteHabit } = props;
 
   return (
-    <HabitContainer>
+    <HabitContainer data-test="habit-container">
       <div>
-        <p>{habit.name}</p>
-        <img src={trash} alt="trash" onClick={() => {if (confirm("Você realmente quer apagar esse hábito?") === true){deleteHabit(habit.id)}}} />
+        <p data-test="habit-name">{habit.name}</p>
+        <img
+          src={trash}
+          alt="trash"
+          onClick={() => {
+            if (confirm("Você realmente quer apagar esse hábito?") === true) {
+              deleteHabit(habit.id);
+            }
+          }}
+          data-test="habit-delete-btn"
+        />
       </div>
       <div>
         {days.map((day) => (
@@ -23,7 +32,7 @@ export default function Habit(props) {
 function DayButton(props) {
   const { day, days } = props;
   return (
-    <Weekday day={day} days={days}>
+    <Weekday day={day} days={days} data-test="habit-day">
       {day.weekDay}
     </Weekday>
   );

@@ -121,8 +121,8 @@ export default function Day() {
         <NavBar />
         <Content counter={counter}>
           <div>
-            <h1>{UpperCaseDate}</h1>
-            <p>
+            <h1 data-test="today">{UpperCaseDate}</h1>
+            <p data-test="today-counter">
               {counter === 0
                 ? "Nenhum hábito concluído ainda"
                 : `${percentage}% dos hábitos concluídos`}

@@ -9,9 +9,9 @@ export default function SideBar() {
   const { percentage } = useContext(UserContext);
 
   return (
-    <Sidebar>
+    <Sidebar data-test="menu">
       <Link to={"/habitos"} style={{ textDecoration: "none" }}>
-        <p>Hábitos</p>
+        <p data-test="habit-link">Hábitos</p>
       </Link>
       <ContainerProgress>
         <Link to={"/hoje"}>
@@ -27,11 +27,12 @@ export default function SideBar() {
               pathColor: "#fff",
               trailColor: "transparent",
             })}
+            data-test="today-link"
           />
         </Link>
       </ContainerProgress>
       <Link to={"/historico"} style={{ textDecoration: "none" }}>
-        <p>Histórico</p>
+        <p data-test="history-link">Histórico</p>
       </Link>
     </Sidebar>
   );
