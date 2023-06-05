@@ -6,8 +6,7 @@ import { useContext } from "react";
 import UserContext from "./context/UserContext";
 
 export default function SideBar() {
-
-  const {percentage} = useContext(UserContext)
+  const { percentage } = useContext(UserContext);
 
   return (
     <Sidebar>
@@ -31,7 +30,9 @@ export default function SideBar() {
           />
         </Link>
       </ContainerProgress>
-      <p>Histórico</p>
+      <Link to={"/historico"} style={{ textDecoration: "none" }}>
+        <p>Histórico</p>
+      </Link>
     </Sidebar>
   );
 }

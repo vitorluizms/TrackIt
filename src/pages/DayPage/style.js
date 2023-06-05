@@ -34,7 +34,7 @@ const ContainerHabit = styled.div`
 `;
 
 const Content = styled.div`
-  height: 100%;
+  height: ${(props) => (props.started === false ? "100vh" : "100%")};
   margin: 98px 3% 70px 3%;
 
   display: flex;
@@ -44,8 +44,10 @@ const Content = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: space-between;
+    align-items: ${(props) =>
+      props.started === false ? "center" : "space-between"};
     justify-content: center;
+    margin-top: ${(props) => (props.started === false ? "30vh" : "0")};
 
     h1 {
       font-family: "Lexend Deca", sans-serif;
@@ -121,14 +123,16 @@ const Habit = styled.div`
     align-items: center;
     justify-content: center;
 
-    background: ${props => props.done === true ? "#8fc549" : "#EBEBEB"};
+    background: ${(props) => (props.done === true ? "#8fc549" : "#EBEBEB")};
     border-radius: 5px;
-    border: 15px solid ${props => props.done === true ? "#8fc549" : "#EBEBEB"};
+    border: 15px solid
+      ${(props) => (props.done === true ? "#8fc549" : "#EBEBEB")};
 
     &:hover {
       cursor: pointer;
-      background: ${props => props.done === true ? "#6b9633" : "#A9A9A9"};
-      border: 15px solid ${props => props.done === true ? "#6b9633" : "#A9A9A9"};
+      background: ${(props) => (props.done === true ? "#6b9633" : "#A9A9A9")};
+      border: 15px solid
+        ${(props) => (props.done === true ? "#6b9633" : "#A9A9A9")};
     }
   }
 `;

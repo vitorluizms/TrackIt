@@ -9,9 +9,11 @@ import "dayjs/locale/pt-br";
 import urlBase from "../../urls";
 import axios from "axios";
 import HabitComponent from "./Habit";
+import { TailSpin } from "react-loader-spinner";
 
 export default function Day() {
   const { token, percentage, setPercentage } = useContext(UserContext);
+  const [started, setStarted] = useState(false)
   const [habits, setHabits] = useState([]);
   const [counter, setCounter] = useState(0);
   const currentDate = dayjs().locale("pt-br").format("dddd, DD/MM");
@@ -37,6 +39,7 @@ export default function Day() {
           finished = (count / response.data.length) * 100;
           setPercentage(finished);
         }
+        setStarted(true)
       })
       .catch((response) => {
         console.log(response);
@@ -91,28 +94,51 @@ export default function Day() {
       });
   }
 
-  return (
-    <Container>
-      <NavBar />
-      <Content counter={counter}>
-        <div>
-          <h1>{UpperCaseDate}</h1>
-          <p>
-            {counter === 0
-              ? "Nenhum hábito concluído ainda"
-              : `${percentage}% dos hábitos concluídos`}
-          </p>
-        </div>
-        {habits.map((habit) => (
-          <HabitComponent
-            habit={habit}
-            count={counter}
-            checkHabit={checkHabit}
-            key={habit.id}
+  if (started === false) {
+    return (
+      <Container>
+        <NavBar />
+        <Content started={started}>
+          <TailSpin
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
           />
-        ))}
-      </Content>
-      <SideBar />
-    </Container>
-  );
+        </Content>
+        <SideBar />
+      </Container>
+    );
+  }
+
+  if (started === true) {
+    return (
+      <Container>
+        <NavBar />
+        <Content counter={counter}>
+          <div>
+            <h1>{UpperCaseDate}</h1>
+            <p>
+              {counter === 0
+                ? "Nenhum hábito concluído ainda"
+                : `${percentage}% dos hábitos concluídos`}
+            </p>
+          </div>
+          {habits.map((habit) => (
+            <HabitComponent
+              habit={habit}
+              count={counter}
+              checkHabit={checkHabit}
+              key={habit.id}
+            />
+          ))}
+        </Content>
+        <SideBar />
+      </Container>
+    );
+  }
 }

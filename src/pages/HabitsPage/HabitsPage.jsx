@@ -158,7 +158,7 @@ export default function Habits() {
               ))}
             </div>
             <div>
-              <p>Cancelar</p>
+              <p onClick={() => setAdd(false)}>Cancelar</p>
               <button>Salvar</button>
             </div>
           </AddHabit>
