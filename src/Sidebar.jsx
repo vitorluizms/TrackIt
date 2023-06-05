@@ -14,7 +14,7 @@ export default function SideBar() {
         <p data-test="habit-link">Hábitos</p>
       </Link>
       <ContainerProgress>
-        <Link to={"/hoje"}>
+        <Link to={"/hoje"} data-test="today-link">
           <CircularProgressbar
             value={percentage}
             text="Hoje"
@@ -27,7 +27,6 @@ export default function SideBar() {
               pathColor: "#fff",
               trailColor: "transparent",
             })}
-            data-test="today-link"
           />
         </Link>
       </ContainerProgress>
