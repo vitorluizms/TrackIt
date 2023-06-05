@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  height: ${props => props.started === false ? "100vh" : "100%"};
+  height: ${(props) => (props.started === false ? "100vh" : "100%")};
   margin: 98px 3% 110px 3%;
 
   display: flex;
@@ -19,9 +19,8 @@ const Content = styled.div`
   div:nth-child(1) {
     width: 100%;
     display: flex;
-    justify-content: ${props => props.started === false ? "center" : "space-between"};
+    justify-content: space-between;
     align-items: center;
-    margin-top: ${props => props.started === false ? "30vh" : "0"};
 
     h1 {
       font-family: "Lexend Deca", sans-serif;
@@ -31,6 +30,14 @@ const Content = styled.div`
 
       color: #126ba5;
     }
+  }
+  div:nth-child(3) {
+    width: 100%;
+    display: flex;
+    justify-content: ${(props) => 
+    props.started === false ? "center" : "center"};
+    align-items: space-between;
+    margin-top: ${(props) => (props.started === false ? "25vh" : "0")};
   }
   p {
     font-family: "Lexend Deca";
@@ -126,6 +133,7 @@ const AddHabit = styled.form`
     button {
       width: 84px;
       height: 35px;
+      margin-right: 25px;
 
       background: #52b6ff;
       border-radius: 5px;

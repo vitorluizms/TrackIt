@@ -58,7 +58,7 @@ export default function Habits() {
   }
 
   function postHabit(e) {
-    console.log('a')
+    console.log("a");
     e.preventDefault();
     if (nameHabit === "") {
       alert("Nome inválido");
@@ -116,6 +116,55 @@ export default function Habits() {
       <Container>
         <NavBar />
         <Content started={started}>
+          <ContainerHabit>
+            <h1>Meus Hábitos</h1>
+            <img
+              onClick={addHabit}
+              src={plus}
+              alt="plus"
+              data-test="habit-create-btn"
+            />
+          </ContainerHabit>
+          <AddHabit
+            addHabit={addHab}
+            onSubmit={postHabit}
+            data-test="habit-create-container"
+          >
+            <input
+              type="text"
+              id="nome do hábito"
+              placeholder="nome do hábito"
+              value={nameHabit}
+              onChange={(e) => setName(e.target.value)}
+              required
+              disabled={state}
+              data-test="habit-name-input"
+            />
+            <div>
+              {days.map((day) => (
+                <ButtonDay
+                  day={day.weekDay}
+                  key={day.name}
+                  arrayDays={arrayDays}
+                  setDays={setArrayDays}
+                  dayId={day.name}
+                  state={state}
+                />
+              ))}
+            </div>
+            <div>
+              <p
+                onClick={() => setAdd(false)}
+                data-test="habit-create-cancel-btn"
+                disabled={state}
+              >
+                Cancelar
+              </p>
+              <button data-test="habit-create-save-btn" disabled={state}>
+                Salvar
+              </button>
+            </div>
+          </AddHabit>
           <TailSpin
             height="80"
             width="80"
@@ -156,6 +205,7 @@ export default function Habits() {
               placeholder="nome do hábito"
               value={nameHabit}
               onChange={(e) => setName(e.target.value)}
+              required
               disabled={state}
               data-test="habit-name-input"
             />
@@ -179,7 +229,9 @@ export default function Habits() {
               >
                 Cancelar
               </p>
-              <button data-test="habit-create-save-btn" disabled={state}>Salvar</button>
+              <button data-test="habit-create-save-btn" disabled={state}>
+                Salvar
+              </button>
             </div>
           </AddHabit>
           {habits.map((habit) => (
